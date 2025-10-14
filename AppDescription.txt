@@ -1,0 +1,5 @@
+I would like to have an app which is getting a list of companies/stocks and then is using a LLM and Tools like a web search to find latest information which are relevant from an investors point of view about the companies. This can be e.g. big projects are sales won, planning an IPO or other stock market activities, significant activities on social media which happened recently, analyst recommendations/reports or similar. Companies shouldn't only searched for by their symbol, but also e.g. the company name shall be used to find information so that the tool is also usable e.g. for pre-IPO companies. 
+
+I would like to be able to run a search on all or selected stock from the list and get a summary of up-to-date information. Besides simple web search more advanced information sources like reddit, twitter, lunar moon or financial web sites shall be selectable by the user.
+
+The SW should be built in python to be extendable by more advanced data science libraries.
