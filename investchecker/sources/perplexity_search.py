@@ -30,11 +30,6 @@ def search_company_news_perplexity(company: str, max_results: int = 5) -> List[D
 
     response = requests.post(url, json=payload, headers=headers)
     if response.status_code != 200:
-        print("Perplexity API call failed.")
-        print("Status code:", response.status_code)
-        print("Response text:", response.text)
-        print("Request payload:", payload)
-        print("Request headers:", headers)
         raise RuntimeError(f"Perplexity API error: {response.status_code} {response.text}")
 
     data = response.json()

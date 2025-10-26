@@ -21,22 +21,24 @@ def generate_pdf_report(company: str, openai_summary: str, perplexity_summary: s
     pdf.cell(0, 10, f"Investor Report: {company}", ln=True, align="C")
     pdf.ln(10)
 
-    # OpenAI Section
-    pdf.set_font("DejaVuSans", "B", 14)
-    pdf.cell(0, 10, "OpenAI Analysis", ln=True)
-    pdf.set_font("DejaVuSans", "", 12)
-    # Calculate available width for multi_cell
     available_width = pdf.w - pdf.l_margin - pdf.r_margin
-    for line in openai_summary.split('\n'):
-        pdf.multi_cell(available_width, 10, line)
-    pdf.ln(5)
 
-    # Perplexity Section
-    pdf.set_font("DejaVuSans", "B", 14)
-    pdf.cell(0, 10, "Perplexity Analysis", ln=True)
-    pdf.set_font("DejaVuSans", "", 12)
-    for line in perplexity_summary.split('\n'):
-        pdf.multi_cell(available_width, 10, line)
+    # OpenAI Section (if provided)
+    if openai_summary:
+        pdf.set_font("DejaVuSans", "B", 14)
+        pdf.cell(0, 10, "OpenAI Analysis", ln=True)
+        pdf.set_font("DejaVuSans", "", 12)
+        for line in openai_summary.split('\n'):
+            pdf.multi_cell(available_width, 10, line)
+        pdf.ln(5)
+
+    # Perplexity Section (if provided)
+    if perplexity_summary:
+        pdf.set_font("DejaVuSans", "B", 14)
+        pdf.cell(0, 10, "Perplexity Analysis", ln=True)
+        pdf.set_font("DejaVuSans", "", 12)
+        for line in perplexity_summary.split('\n'):
+            pdf.multi_cell(available_width, 10, line)
 
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     pdf.output(output_path)

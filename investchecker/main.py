@@ -36,29 +36,51 @@ def main():
     parser = argparse.ArgumentParser(description="InvestChecker CLI")
     parser.add_argument("--input", required=True, help="Path to company list (CSV or TXT)")
     parser.add_argument("--output_dir", default="reports", help="Directory to save PDF reports")
-    parser.add_argument("--llm", default="openai", choices=["openai", "perplexity"], help="LLM provider")
+    parser.add_argument(
+        "--llm",
+        nargs="*",
+        choices=["openai", "perplexity"],
+        default=None,
+        help="LLM provider(s) to use. Specify one or both. If omitted, all providers are used."
+    )
     parser.add_argument("--max_results", type=int, default=5, help="Max web search results per company")
     args = parser.parse_args()
 
     companies = read_companies(args.input)
     os.makedirs(args.output_dir, exist_ok=True)
 
-    for company in companies:
-        print(f"Processing: {company}")
-        try:
-            # Tavily + OpenAI
-            tavily_results = search_company_news(company, max_results=args.max_results)
-            openai_summary = summarize_company_news(company, tavily_results, llm_provider="openai")
+    # Determine which providers to use based on --llm argument
+    # If --llm is omitted or empty, use all providers. Otherwise, use only the selected ones.
+    if args.llm is None or len(args.llm) == 0:
+        providers = ["openai", "perplexity"]
+    else:
+        providers = args.llm
 
-            # Perplexity search + Perplexity LLM
-            perplexity_results = search_company_news_perplexity(company, max_results=args.max_results)
-            perplexity_summary = summarize_company_news(company, perplexity_results, llm_provider="perplexity")
+    for company in companies:
+        try:
+            # Initialize summaries as empty strings
+            openai_summary = ""
+            perplexity_summary = ""
+
+            # Only use the selected model providers
+            if "openai" in providers:
+                tavily_results = search_company_news(company, max_results=args.max_results)
+                openai_summary = summarize_company_news(company, tavily_results, llm_provider="openai")
+
+            if "perplexity" in providers:
+                perplexity_results = search_company_news_perplexity(company, max_results=args.max_results)
+                perplexity_summary = summarize_company_news(company, perplexity_results, llm_provider="perplexity")
 
             output_path = os.path.join(args.output_dir, f"{company.replace(' ', '_')}_report.pdf")
-            generate_pdf_report(company, openai_summary, perplexity_summary, output_path)
-            print(f"Report saved: {output_path}")
+            # Only the selected providers' summaries will be included in the report
+            generate_pdf_report(
+                company,
+                openai_summary,
+                perplexity_summary,
+                output_path
+            )
         except Exception as e:
-            print(f"Error processing {company}: {e}")
+            pass
 
 if __name__ == "__main__":
     main()

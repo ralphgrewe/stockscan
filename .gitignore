@@ -1,0 +1,28 @@
+# Ignore DejaVu fonts and related files downloaded for PDF report generation
+investchecker/output/dejavu-fonts-ttf-2.37/
+investchecker/output/dejavu-fonts-ttf-2.37.zip
+investchecker/output/*.ttf
+
+# Add other files/folders to ignore below as needed
+
+# Typical Python project ignores
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+.env
+*.egg-info/
+*.egg
+.mypy_cache/
+.pytest_cache/
+.coverage
+.cache
+.DS_Store
+.idea/
+.vscode/
+pip-wheel-metadata/
+.ipynb_checkpoints/
