@@ -6,19 +6,25 @@ Describes the technologies used, development setup, technical constraints, depen
 ---
 
 ## Technologies Used
-- [ ] List all major technologies, languages, and frameworks
+- [x] Python for core logic and orchestration
+- [x] FPDF library for PDF report generation
+- [x] DejaVuSans Unicode font for full Unicode character support in PDF output
 
 ## Development Setup
 - [ ] Document environment setup and configuration
 
 ## Technical Constraints
-- [ ] Note any limitations or requirements
+- [x] PDF reports require Unicode font (DejaVuSans.ttf) to support non-ASCII characters.
+- [x] Output directory for PDF reports must exist or be created at runtime.
 
 ## Dependencies
-- [ ] List key libraries and external dependencies
+- [x] fpdf (Python package)
+- [x] DejaVuSans.ttf (included in output/dejavu-fonts-ttf-2.37/ttf/)
 
 ## Tool Usage Patterns
-- [ ] Describe how tools are used in the workflow
+- [x] PDF reports are generated using FPDF, with DejaVuSans font added for Unicode support.
+- [x] Reports include OpenAI and Perplexity analyses if provided.
+- [x] Output directory is created automatically if it does not exist.
 
 ---
 

@@ -6,19 +6,21 @@ Tracks what works, what's left to build, current status, known issues, and the e
 ---
 
 ## What Works
-- [ ] List features and components that are complete and functional
+- [x] PDF report generation is functional, now supports Unicode via DejaVuSans font.
+- [x] Reports include both OpenAI and Perplexity analyses if provided.
 
 ## What's Left to Build
 - [ ] Outline remaining features, tasks, and improvements
 
 ## Current Status
-- [ ] Summarize the current state of the project
+- [x] Minimum version runs successfully. PDF generation is stable and supports Unicode. Both OpenAI and Perplexity summaries are included in reports if available.
 
 ## Known Issues
 - [ ] Document bugs, blockers, and technical debt
 
 ## Evolution of Project Decisions
-- [ ] Track major changes in direction or scope
+- [x] Added Unicode font (DejaVuSans) support to PDF reports to handle non-ASCII characters.
+- [x] Fixed bugs in PDF generation; minimum version now runs as of 2025-10-18.
 
 ---
 

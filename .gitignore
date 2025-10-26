@@ -4,6 +4,8 @@ investchecker/output/dejavu-fonts-ttf-2.37.zip
 investchecker/output/*.ttf
 
 # Add other files/folders to ignore below as needed
+reports/*.pdf
+investchecker/output/*.pdf
 
 # Typical Python project ignores
 __pycache__/

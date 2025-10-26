@@ -6,22 +6,28 @@ Tracks the current work focus, recent changes, next steps, active decisions, imp
 ---
 
 ## Current Work Focus
-- [ ] Describe what is being worked on right now
+- [x] Stabilizing PDF report generation and ensuring Unicode support with DejaVuSans font.
+- [x] Verifying that both OpenAI and Perplexity analyses are included in reports.
 
 ## Recent Changes
-- [ ] Summarize recent updates and modifications
+- [x] Fixed bugs in PDF generation; minimum version now runs.
+- [x] Added DejaVuSans Unicode font to support non-ASCII characters in PDF output.
 
 ## Next Steps
-- [ ] List immediate next actions
+- [x] Further test PDF generation with diverse input data.
+- [ ] Expand report features or add new analysis sources as needed.
 
 ## Active Decisions & Considerations
-- [ ] Document ongoing decisions and trade-offs
+- [x] Chose DejaVuSans as the default font for Unicode compatibility in PDF reports.
+- [x] Decided to modularize report sections for OpenAI and Perplexity analyses.
 
 ## Important Patterns & Preferences
-- [ ] Note any conventions or preferences in use
+- [x] Modular PDF report generation with conditional inclusion of analysis sections.
+- [x] Use of Unicode fonts to ensure broad character support.
 
 ## Learnings & Project Insights
-- [ ] Capture key learnings and insights
+- [x] Unicode support is essential for robust PDF output.
+- [x] Automated directory creation prevents file output errors.
 
 ---
 
